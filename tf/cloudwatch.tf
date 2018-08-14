@@ -4,8 +4,8 @@ variable "backup_frequency" {
 
 data "aws_ebs_volume" "ebs_volume" {
   filter {
-    name   = "tag:Name"
-    values = ["${var.name}"]
+    name   = "attachment.instance-id"
+    values = ["${aws_instance.instance.id}"]
   }
 
   depends_on = ["aws_instance.instance"]
