@@ -11,5 +11,3 @@
 # IntelliJ
 .idea
 *.iml
-
-main.tf
