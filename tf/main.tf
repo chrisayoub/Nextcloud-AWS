@@ -10,11 +10,7 @@ variable "name" {
   default = "nextcloud"
 }
 
-variable "domain" {
-}
-
-variable "account_id" {
-}
+variable "domain" {}
 
 terraform {
   backend "s3" {

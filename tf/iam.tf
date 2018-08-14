@@ -1,6 +1,7 @@
 # EBS Create Snapshot
 resource "aws_iam_role" "EBS" {
   path = "/service-role/"
+
   assume_role_policy = <<POLICY
 {
   "Version": "2012-10-17",
@@ -18,8 +19,9 @@ POLICY
 }
 
 resource "aws_iam_policy" "EBS_Create_Snapshot" {
-  path        = "/service-role/"
-  policy      = <<POLICY
+  path = "/service-role/"
+
+  policy = <<POLICY
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -39,14 +41,15 @@ POLICY
 }
 
 resource "aws_iam_role_policy_attachment" "EBS" {
-  role = "${aws_iam_role.EBS.name}"
+  role       = "${aws_iam_role.EBS.name}"
   policy_arn = "${aws_iam_policy.EBS_Create_Snapshot.arn}"
 }
 
 # EBS Delete Snapshots
 resource "aws_iam_policy" "SnapshotFullAccess" {
-  path        = "/"
-  policy      = <<POLICY
+  path = "/"
+
+  policy = <<POLICY
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -79,7 +82,8 @@ POLICY
 
 # Lambda
 resource "aws_iam_role" "lambda" {
-  path               = "/"
+  path = "/"
+
   assume_role_policy = <<POLICY
 {
   "Version": "2012-10-17",
@@ -97,6 +101,6 @@ POLICY
 }
 
 resource "aws_iam_role_policy_attachment" "Lambda_Delete_EBS" {
-  role = "${aws_iam_role.lambda.name}"
+  role       = "${aws_iam_role.lambda.name}"
   policy_arn = "${aws_iam_policy.SnapshotFullAccess.arn}"
 }

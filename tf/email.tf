@@ -1,6 +1,6 @@
 provider "aws" {
   region = "us-east-1"
-  alias = "east-1"
+  alias  = "east-1"
 }
 
 resource "aws_ses_domain_identity" "email" {

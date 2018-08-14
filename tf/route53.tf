@@ -1,6 +1,6 @@
 # Route 53 Zone
 resource "aws_route53_zone" "public" {
-  name       = "${var.domain}"
+  name = "${var.domain}"
 }
 
 # Route 53 Rules
@@ -10,7 +10,6 @@ resource "aws_route53_record" "A" {
   type    = "A"
   records = ["${aws_instance.instance.public_ip}"]
   ttl     = "300"
-
 }
 
 resource "aws_route53_record" "CNAME" {
