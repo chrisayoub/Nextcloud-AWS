@@ -11,3 +11,5 @@
 # IntelliJ
 .idea
 *.iml
+
+db.env
